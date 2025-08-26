@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from src.pipeline.predict_pipeline import CustomData, PredictPipeline
 import uvicorn
 
-app = FastAPI()
+application = FastAPI()
 
 
 # Input schema
@@ -17,7 +17,7 @@ class InputData(BaseModel):
     writing_score: float
 
 
-@app.get("/")
+@application.get("/")
 def home():
     return {
         "message": "Go to run the Streamlit app for predictions",
@@ -25,7 +25,7 @@ def home():
     }
 
 
-@app.post("/predict")
+@application.post("/predict")
 def predict(data: InputData):
     custom_data = CustomData(
         gender=data.gender,
@@ -47,4 +47,4 @@ def predict(data: InputData):
 
 if __name__ == "__main__":
     # This will run the server when you do: python main.py
-    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
+    uvicorn.run("applicatio:application", host="127.0.0.1", port=8000, reload=True)
