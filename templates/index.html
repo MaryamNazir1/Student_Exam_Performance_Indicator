@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Student Exam Performance Indicator</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}">
+</head>
+<body>
+  <!-- GitHub Link -->
+  <a href="https://github.com/MaryamNazir1/ml" class="top-left-link" target="_blank">
+    GitHub Repository Link
+  </a>
+
+  <h1 class="title">📘 Student Exam Performance Indicator - Maryam Nazir</h1>
+
+ <div class="profile-container">
+  <img src="{{ url_for('static', path='images/pic.jpeg') }}" 
+       alt="Maryam Nazir" class="profile">
+</div>
+
+  <!-- Prediction Form -->
+  <div class="form-box">
+    <form action="/predict" method="post">
+      <h2 class="form-title">Student Exam Performance Prediction</h2>
+
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select id="gender" name="gender" required>
+          <option selected disabled value="">Select your Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="race_ethnicity">Race or Ethnicity</label>
+        <select id="race_ethnicity" name="race_ethnicity" required>
+          <option selected disabled value="">Select Ethnicity</option>
+          <option value="group A">Group A</option>
+          <option value="group B">Group B</option>
+          <option value="group C">Group C</option>
+          <option value="group D">Group D</option>
+          <option value="group E">Group E</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="parental_level_of_education">Parental Level of Education</label>
+        <select id="parental_level_of_education" name="parental_level_of_education" required>
+          <option selected disabled value="">Select Parent Education</option>
+          <option value="associate's degree">Associate's degree</option>
+          <option value="bachelor's degree">Bachelor's degree</option>
+          <option value="high school">High school</option>
+          <option value="master's degree">Master's degree</option>
+          <option value="some college">Some college</option>
+          <option value="some high school">Some high school</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="lunch">Lunch Type</label>
+        <select id="lunch" name="lunch" required>
+          <option selected disabled value="">Select Lunch Type</option>
+          <option value="free/reduced">Free/Reduced</option>
+          <option value="standard">Standard</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="test_preparation_course">Test Preparation Course</label>
+        <select id="test_preparation_course" name="test_preparation_course" required>
+          <option selected disabled value="">Select Test Course</option>
+          <option value="none">None</option>
+          <option value="completed">Completed</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="reading_score">Reading Score (0-100)</label>
+        <input type="number" id="reading_score" name="reading_score" 
+               placeholder="Enter your Reading score" min="0" max="100" required>
+      </div>
+
+      <div class="form-group">
+        <label for="writing_score">Writing Score (0-100)</label>
+        <input type="number" id="writing_score" name="writing_score" 
+               placeholder="Enter your Writing score" min="0" max="100" required>
+      </div>
+
+      <div class="form-group">
+        <input type="submit" value="Predict your Maths Score" class="btn">
+      </div>
+    </form>
+  </div>
+
+  <!-- Prediction Result -->
+  <div class="result-box">
+    <h2>📊 Predicted Maths Score: <span>{{ results }}</span></h2>
+  </div>
+</body>
+</html>
